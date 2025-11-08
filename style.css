@@ -1,0 +1,383 @@
+/* 
+  ==========================================
+  STYLE.CSS for SEQUOIA FAY
+  ==========================================
+  CONTENTS:
+  1. Google Font Imports
+  2. CSS Variables (Brand Colors)
+  3. Global & Reset Styles
+  4. Typography (Headings, Paragraphs)
+  5. Layout (Containers, Sections)
+  6. Navigation Bar
+  7. Section: Home (Hero)
+  8. Section: Demo (Responsive Video)
+  9. Section: About
+  10. Section: Contact (CTA Button)
+  11. Footer
+  12. Responsive Media Queries
+  ==========================================
+*/
+
+/* 1. GOOGLE FONT IMPORTS */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Vollkorn:wght@600&display=swap');
+
+/* 
+  2. CSS VARIABLES (BRAND COLORS)
+  These are the brand colors from the "Sequoia Earth" palette.
+  They are used throughout the stylesheet.
+*/
+:root {
+    --bg-color: #FBFBF7;         /* Light Parchment */
+    --text-color: #2B351C;      /* Dark Forest */
+    --heading-color: #626B3E;   /* Deep Olive */
+    --accent-color: #BAB86C;    /* Faded Olive */
+    --interactive-color: #B26F35; /* Warm Brown */
+}
+
+/* 
+  3. GLOBAL & RESET STYLES 
+*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    /* This creates the smooth scroll effect for anchor links */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 
+  4. TYPOGRAPHY 
+*/
+h1, h2, h3 {
+    font-family: 'Vollkorn', serif;
+    font-weight: 600;
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3.5rem; /* Large text for the Hero section */
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--interactive-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--text-color);
+}
+
+/* 
+  5. LAYOUT (CONTAINERS, SECTIONS) 
+*/
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.page-section {
+    padding: 5rem 1rem;
+    min-height: 100vh; /* Make sections (except contact) full-height */
+    
+    /* 
+      THIS IS THE FIX for the fixed navigation bar.
+      It adds a 70px margin (matching navbar height) 
+      when scrolling to an ID.
+    */
+    scroll-margin-top: 70px;
+}
+
+/* Alternate background colors for sections */
+#demo, #contact {
+    background-color: #f4f4f0; /* A slightly darker beige */
+    min-height: auto; /* Demo and Contact don't need to be full height */
+}
+
+/* 
+  6. NAVIGATION BAR 
+*/
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--accent-color);
+    z-index: 1000;
+    padding: 0 2rem;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-family: 'Vollkorn', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+.nav-brand:hover {
+    color: var(--text-color);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 1.5rem;
+}
+
+.nav-menu a {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--accent-color);
+}
+
+/* 
+  7. SECTION: HOME (HERO) 
+*/
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* 
+      Subtle nature background graphic.
+      Replace 'sequoia-silhouette.png' with a real image URL or
+      a more complex CSS background-image.
+    */
+    background-image: url('httpsimg.com/placeholder.png/1920x1080/fbfbf7/626b3e?text=Nature+Background+Silhouette');
+    background-size: cover;
+    background-position: center center;
+    background-blend-mode: overlay;
+    background-color: rgba(251, 251, 247, 0.8); /* 80% opaque bg color overlay */
+}
+
+.hero p {
+    font-family: 'Vollkorn', serif;
+    font-size: 1.5rem;
+    color: var(--heading-color);
+}
+
+/* 
+  8. SECTION: DEMO (RESPONSIVE VIDEO) 
+*/
+#demo.container {
+    max-width: 800px; /* Wider container for video */
+    text-align: center;
+}
+
+.video-responsive-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 2rem auto;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.video-responsive-wrapper iframe {
+    /* 
+      This is the pure CSS responsive iframe solution.
+      It sets a 16:9 aspect ratio.
+    */
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    display: block;
+}
+
+#demo iframe {
+    margin-top: 2rem;
+}
+
+/* 
+  9. SECTION: ABOUT 
+*/
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.about-image {
+    flex: 1;
+    max-width: 400px;
+}
+
+.about-image img {
+    border-radius: 5px;
+    border: 1px solid var(--accent-color);
+    padding: 5px;
+}
+
+.about-text {
+    flex: 2;
+}
+
+.about-text h2 {
+    text-align: left;
+}
+
+/* 
+  10. SECTION: CONTACT (CTA BUTTON) 
+*/
+#contact.container {
+    max-width: 700px;
+    text-align: center;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--interactive-color);
+    color: var(--bg-color);
+    font-family: 'Vollkorn', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #a1622f; /* Darker brown */
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* 
+  11. FOOTER 
+*/
+footer {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.social-links a {
+    color: var(--bg-color);
+    margin: 0 0.5rem;
+}
+
+.social-links svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--bg-color);
+    transition: stroke 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover svg {
+    stroke: var(--accent-color);
+    transform: scale(1.1);
+}
+
+footer p {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+
+/* 
+  12. RESPONSIVE MEDIA QUERIES 
+*/
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+
+   .page-section {
+        /* Reduce padding on small screens */
+        padding: 4rem 1rem;
+        min-height: auto; /* Remove vh height on mobile */
+    }
+
+    /* Stack the About section on mobile */
+   .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+   .about-text h2 {
+        text-align: center;
+    }
+
+    /* Responsive Navigation */
+   .nav-container {
+        flex-direction: column;
+        height: auto;
+        padding: 0.5rem 0;
+    }
+   .navbar {
+        height: auto;
+        position: static; /* Make nav static on mobile */
+    }
+   .nav-menu {
+        margin-top: 0.5rem;
+    }
+   .nav-menu li {
+        margin: 0 0.75rem;
+    }
+
+    /* 
+      Because nav is no longer fixed, 
+      we MUST remove the scroll-margin-top.
+    */
+   .page-section {
+        scroll-margin-top: 0;
+    }
+
+    /* Adjust hero text for smaller navbar */
+    #home.hero {
+        padding-top: 2rem;
+    }
+}
